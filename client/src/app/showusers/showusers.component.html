@@ -1,0 +1,46 @@
+<h1>Users for this customer</h1>
+<div class="d-flex justify-content-center"></div>
+<table class="table" id="tab">
+  <thead>
+    <tr>
+      
+      <th scope="col">FirstName</th>
+      <th scope="col">MiddleName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Role</th>
+      <th scope="col">Address</th>
+      <!--<th scope="col"> CustName</th>-->
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <p> </p>
+    <tr *ngFor="let e of currentUser">
+      {{ e.key }}
+      {{ e.value}}
+      <td><input value="{{ e.firstname }}" disabled /></td>
+      <td><input value="{{ e.middlename }}" disabled /></td>
+      <td><input value="{{ e.lastname }}" disabled /></td>
+      <td><input value="{{ e.email }}" disabled /></td>
+      <td><input value="{{ e.phone }}" disabled /></td>
+
+      <td>
+        
+        <select (ngModelChange)="getRole(e.role)" ng-init='roleSelect=e.role' name='roleSelect' disabled>
+
+          <option *ngFor="let r of roles" [ngValue]="getRole(r)" [selected]='e.role'>
+            {{ getRole(r) }}
+          </option>
+          
+        </select> 
+        
+      </td>
+      <td><input value="{{ e.address }}" disabled /></td>
+      <!--<td><input value="{{ e.customer.name }}" disabled /></td>-->
+      <td><button><a [routerLink]="['/editUsers', e.id]">Edit</a></button></td>
+      <td><button (click)="deleteMember(e.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

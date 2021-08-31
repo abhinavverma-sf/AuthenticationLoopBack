@@ -1,0 +1,26 @@
+<h1>Registered Customers</h1>
+<div class="d-flex justify-content-center"></div>
+<table class="table" id="tab">
+  <thead>
+    <tr>
+      
+      <th scope="col">Name</th>
+      <th scope="col">Website</th>
+      <th scope="col">Address</th>
+      <!--<th scope="col"> CustName</th>-->
+      <th scope="col">Actions</th>
+      <th scope="col"> #</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of li">
+      
+      <td><input value="{{ e.name }}" disabled /></td>
+      <td><input value="{{ e.website }}" disabled /></td>
+      <td><input value="{{ e.address }}" disabled /></td>
+      <td><button><a [routerLink]="['/editCustomers', e.customerid]">Edit</a></button></td>
+      <td><button (click)="deleteMember(e.customerid)">Delete</button></td>
+      <td><button><a [routerLink]="['/showusers',e.customerid]"> Show Users</a> </button></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,238 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.8 (Ubuntu 12.8-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.8 (Ubuntu 12.8-0ubuntu0.20.04.1)
+
+-- Started on 2021-08-31 09:46:24 IST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+DROP DATABASE loopbackassign;
+--
+-- TOC entry 2986 (class 1262 OID 16466)
+-- Name: loopbackassign; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE loopbackassign WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_IN' LC_CTYPE = 'en_IN';
+
+
+ALTER DATABASE loopbackassign OWNER TO postgres;
+
+\connect loopbackassign
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 203 (class 1259 OID 16475)
+-- Name: customer; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.customer (
+    customerid numeric NOT NULL,
+    name character varying NOT NULL,
+    address character varying NOT NULL,
+    website character varying NOT NULL
+);
+
+
+ALTER TABLE public.customer OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16488)
+-- Name: role; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.role (
+    key numeric NOT NULL,
+    name character varying NOT NULL,
+    description character varying NOT NULL
+);
+
+
+ALTER TABLE public.role OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16467)
+-- Name: user; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."user" (
+    email character varying NOT NULL,
+    firstname character varying NOT NULL,
+    lastname character varying NOT NULL,
+    middlename character varying NOT NULL,
+    phone character varying NOT NULL,
+    address character varying NOT NULL,
+    customerid numeric,
+    role numeric,
+    username character varying,
+    password character varying,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public."user" OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 16513)
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.user_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2987 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
+
+
+--
+-- TOC entry 2841 (class 2604 OID 16515)
+-- Name: user id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regclass);
+
+
+--
+-- TOC entry 2978 (class 0 OID 16475)
+-- Dependencies: 203
+-- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.customer (customerid, name, address, website) VALUES (0, 'gopi', 'delhi', 'gopi.com');
+INSERT INTO public.customer (customerid, name, address, website) VALUES (1, 'billu', 'ballia', 'billu.com');
+INSERT INTO public.customer (customerid, name, address, website) VALUES (2, 'pandey', 'chakia', 'pandey.com');
+INSERT INTO public.customer (customerid, name, address, website) VALUES (3, 'mahesh', 'sahara', 'ms.com');
+INSERT INTO public.customer (customerid, name, address, website) VALUES (4, 'pinku', 'gokuldhami', 'pinkudham.com');
+
+
+--
+-- TOC entry 2979 (class 0 OID 16488)
+-- Dependencies: 204
+-- Data for Name: role; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.role (key, name, description) VALUES (0, 'ADMIN', 'I am admin');
+INSERT INTO public.role (key, name, description) VALUES (1, 'SUPER_ADMIN', 'I am super admin');
+INSERT INTO public.role (key, name, description) VALUES (2, 'SUBSCRIBER', 'I am subscriber');
+
+
+--
+-- TOC entry 2977 (class 0 OID 16467)
+-- Dependencies: 202
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('mt@gmail.com', 'miya', 'tassali', 'ji', '1209520952', 'kabul', 3, 0, NULL, NULL, 2);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('clm@gmail.com', 'carina', 'leow', 'mishra', '9898151234', 'london', 1, 1, NULL, NULL, 3);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('nj@gmail.com', 'nick', 'jones', 'ji', '1209120912', 'hongkong', 2, 1, NULL, NULL, 4);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('sw@gmail.com', 'salman', 'wahid', 'ji', '1209120952', 'lahori', 3, 1, NULL, NULL, 5);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('rj@gmail.com', 'rishu', 'jay', 'ji', '1234432191', 'bihar', 4, 0, NULL, NULL, 6);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('rg@gmail.com', 'riya', 'gogoi', 'ji', '1234432134', 'assam', 4, 0, NULL, NULL, 7);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('abc@gmail.com', 'a', 'c', 'biji', '1234567890', 'delhi', 0, 0, NULL, NULL, 8);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('pc@gmail.com', 'priyanka', 'chopra', 'ji2', '1209120912', 'thailand', 2, 2, NULL, NULL, 9);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('sk@gmail.com', 'santosh', 'kumar', 'ji', '120909120', 'delhi', 3, 0, 'santoshk', 'tyipp', 10);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('ss@gmail.com', 'saloni', 'sji', 'sinha', '92838484291', 'delhi', 3, 0, 'salonisinha', 'sinhasaloni', 11);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('km@gmail.com', 'kirti', 'mishra', 'ji', '6565656565', 'pune', 1, 0, 'kirtimishra', '$2a$10$0ucDgSI7JVGQvIOSocTiDOes6FEbV7vK/KITqq1noxJb9GcM02/Tq', 12);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('bp@gmail.com', 'billu', 'pandey', 'ji', '1209348756', 'gurgaon', 2, 0, 'billupandey', '$2a$10$PmmplaOlxoYl0PKyU0q61.kch.8vTfSKb4/7NJ/Wb5.MnyubVjWGS', 13);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('pjp@gmail.com', 'pappu', 'pandey', 'ji', '1209234587', 'delhi', 2, 1, 'pappupandey', '$2a$10$qKbvpMIzL7eTXE4dC33OyOAkA/mWcjSXwdxT5xKq.4UdhGUKNGxWK', 14);
+INSERT INTO public."user" (email, firstname, lastname, middlename, phone, address, customerid, role, username, password, id) VALUES ('pjpi@gmail.com', 'pappu', 'pandey', 'ji', '1209120391', 'delhi', 2, 1, 'pappupandey', '$2a$10$6Rt/ZTHfvXyldVwszy8tKehyLnX5LyMtK.wPY7psE754JBmO/dAEy', 16);
+
+
+--
+-- TOC entry 2988 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.user_id_seq', 16, true);
+
+
+--
+-- TOC entry 2847 (class 2606 OID 16482)
+-- Name: customer customer_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.customer
+    ADD CONSTRAINT customer_pkey PRIMARY KEY (customerid);
+
+
+--
+-- TOC entry 2849 (class 2606 OID 16495)
+-- Name: role role_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.role
+    ADD CONSTRAINT role_pkey PRIMARY KEY (key);
+
+
+--
+-- TOC entry 2843 (class 2606 OID 16512)
+-- Name: user unique; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT "unique" UNIQUE (email);
+
+
+--
+-- TOC entry 2845 (class 2606 OID 16517)
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2850 (class 2606 OID 16506)
+-- Name: user fk_user_customerId; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT "fk_user_customerId" FOREIGN KEY (customerid) REFERENCES public.customer(customerid) ON UPDATE CASCADE ON DELETE CASCADE NOT VALID;
+
+
+-- Completed on 2021-08-31 09:46:24 IST
+
+--
+-- PostgreSQL database dump complete
+--
+

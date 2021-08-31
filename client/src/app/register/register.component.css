@@ -1,0 +1,26 @@
+#formid{
+    border: black;
+    border-style: solid;
+    max-width: 50%;
+    margin: auto auto auto auto;
+}
+label{
+    font-weight: bolder;
+    background-color:lightgreen;
+    margin: auto auto auto auto;
+}
+input{
+    max-width: 50%;
+    margin: auto auto auto 10px;
+}
+#submitbutton{
+    font-weight: bolder;
+    background-color: black;
+}
+#instead{
+    color: blueviolet;
+    float: right;
+    background-color: gold;
+    border-style: solid;
+    font-size: larger;
+}

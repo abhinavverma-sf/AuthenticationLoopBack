@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()" id="formid">
+  <div class="form-group">
+    <label for="loginEmail">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="loginEmail"
+      placeholder="Enter email"
+      [(ngModel)]="credentials.email"
+      name="loginEmail"
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="loginPassword">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="loginPassword"
+      placeholder="Password"
+      [(ngModel)]="credentials.password"
+      name="loginPassword"
+    />
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary" id="submitbutton">Submit</button>
+  <br />
+  <br />
+  <a routerLink="/register" id="linkregister">Register Instead ?</a>
+</form>

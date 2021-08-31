@@ -1,0 +1,16 @@
+<div style="text-align:center">
+    
+
+    <a *ngIf="!authService.loggedIn()" routerLink="/login" id="login"> Login </a>
+    <a *ngIf="!authService.loggedIn()" routerLink="/register" id="register">Register</a>
+    <a *ngIf="authService.loggedIn()" routerLink="/login" (click)="authService.logoutUser()" id="logout"> Logout</a> 
+    
+  
+  </div>
+  
+  
+  
+  
+  
+  <router-outlet></router-outlet>
+  

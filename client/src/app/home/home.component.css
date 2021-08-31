@@ -1,0 +1,12 @@
+#buttonallover{
+    font-size: 50px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black;
+    background-color: yellow;
+    color: black;
+    font-weight: bolder;
+}
+body{
+    background-color: black;
+}

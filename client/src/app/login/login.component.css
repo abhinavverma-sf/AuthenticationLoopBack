@@ -1,0 +1,31 @@
+#formid{
+    border-style: solid;
+    margin: auto auto auto auto;
+    max-width: 25%;
+    border-width: 5px;
+}
+label{
+    font-weight: bolder;
+    background-color: lightgreen;
+    margin-left: 2px;
+    margin-top: 2px;
+
+}
+#submitbutton{
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+}
+input {
+    max-width: 70%;
+}
+#linkregister{
+    position: relative;
+    background-color:gold;
+    color:black;
+    font-weight: bolder;
+    padding: auto auto auto auto;
+    margin-left: 200px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}

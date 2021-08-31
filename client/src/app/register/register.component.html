@@ -1,0 +1,175 @@
+<div class="container-lg">
+  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()" id="formid">
+    <div class="form-group">
+      <label for="AddUserFirstName">First Name</label>
+      <input
+        class="form-control"
+        id="AddUserFirstName"
+        formControlName="firstname"
+      />
+
+      <div
+        *ngIf="
+          addUserForm.controls['firstname'].invalid &&
+          (addUserForm.controls['firstname'].dirty ||
+            addUserForm.controls['firstname'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addUserForm.controls['firstname'].errors?.required">
+          First Name is required.
+        </div>
+        <div *ngIf="addUserForm.controls['firstname'].errors?.minlength">
+          First Name must be at least 3 characters long.
+        </div>
+      </div>
+
+      <br />
+    </div>
+
+    <div class="form-group">
+      <label for="AddUserMiddleName">Middle Name</label>
+      <input
+        class="form-control"
+        id="AddUserMiddleName"
+        formControlName="middlename"
+      />
+      <br />
+    </div>
+    <div class="form-group">
+      <label for="AddUserLastName">Last Name</label>
+      <input
+        class="form-control"
+        id="AddUserLastName"
+        formControlName="lastname"
+      />
+      <div
+        *ngIf="
+          addUserForm.controls['lastname'].invalid &&
+          (addUserForm.controls['lastname'].dirty ||
+            addUserForm.controls['lastname'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addUserForm.controls['lastname'].errors?.required">
+          Last Name is required.
+        </div>
+        <div *ngIf="addUserForm.controls['lastname'].errors?.minlength">
+          Last Name must be at least 3 characters long.
+        </div>
+      </div>
+      <br />
+    </div>
+    <div class="form-group">
+      <label for="AddUserName">User Name</label>
+      <input class="form-control" id="AddUserName" formControlName="username" />
+      <br />
+    </div>
+    <div class="form-group">
+      <label for="AddUserEmail">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="AddUserEmail"
+        formControlName="email"
+      />
+      <div
+        *ngIf="
+          addUserForm.controls['email'].invalid &&
+          (addUserForm.controls['email'].dirty ||
+            addUserForm.controls['email'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addUserForm.controls['email'].errors?.required">
+          Email is required.
+        </div>
+      </div>
+      <br />
+    </div>
+    <div class="form-group">
+      <label for="AddUserPassword">Password</label>
+      <input
+        class="form-control"
+        type="password"
+        id="AddUserPassword"
+        formControlName="password"
+      />
+
+      <div
+        *ngIf="
+          addUserForm.controls['password'].invalid &&
+          (addUserForm.controls['password'].dirty ||
+            addUserForm.controls['password'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addUserForm.controls['password'].errors?.required">
+          Password is required.
+        </div>
+        <div *ngIf="addUserForm.controls['password'].errors?.minlength">
+          Password must be at least 8 characters long.
+        </div>
+      </div>
+
+      <br />
+    </div>
+    <div class="form-group">
+      <label for="AddUserPhoneNumber">Phone Number</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="AddUserPhoneNumber"
+        formControlName="phone"
+      />
+      <div
+        *ngIf="
+          addUserForm.controls['phone'].invalid &&
+          (addUserForm.controls['phone'].dirty ||
+            addUserForm.controls['phone'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addUserForm.controls['phone'].errors?.required">
+          Phone Number is required.
+        </div>
+        <div *ngIf="addUserForm.controls['phone'].errors?.pattern">
+          Phone Number must be 10 digits
+        </div>
+      </div>
+      <br />
+    </div>
+
+    <div class="form-group">
+      <label for="AddUserAddress">Address</label>
+      <input
+        class="form-control"
+        id="AddUserAddress"
+        formControlName="address"
+      />
+      <div
+        *ngIf="
+          addUserForm.controls['address'].invalid &&
+          (addUserForm.controls['address'].dirty ||
+            addUserForm.controls['address'].touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="addUserForm.controls['address'].errors?.required">
+          Address is required.
+        </div>
+      </div>
+      <br />
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!addUserForm.valid"
+      id="submitbutton"
+    >
+      Submit
+    </button>
+    <a routerLink="/login" id="instead">Login Instead?</a>
+  </form>
+</div>

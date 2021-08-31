@@ -1,0 +1,35 @@
+#cancel{
+    color: black;
+    background-color: wheat;
+    font-weight: bolder;
+}
+#editForm{
+    border-style: solid;
+    border-width: 5px;
+    max-width: 50%;
+    float: left;
+    margin-left: 10%;
+    padding: 10px 10px 10px 10px ;
+}
+label{
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+    padding: 10px 10px 10px 10px;
+    margin: 5px 5px 5px 5px;
+}
+#input{
+    border-width: 5px;
+}
+button{
+    margin: 5px 5px 5px 5px;
+
+}
+#savebutton{
+    color: black;
+    background-color: lightgreen;
+}
+#buttonallover{
+    display: none;
+    background-color: white;
+}   
